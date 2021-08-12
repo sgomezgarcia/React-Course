@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import { Link, Route } from 'wouter';
+
 function App() {
+
+  const [keyword, setKeyword] = useState('panda');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="App-content">
+        <Link>
+          <img className="App-logo" alt='Giffy logo' src="logo.png" />
+        </Link>
+        <Route
+          component={Home}
+          path="/"
+        />
+        <Route
+          component={SearchResults}
+          path="/search/:keyword"
+        />
+        <Route
+          component={Detail}
+          path="/gif/:id"
+        />
+          
+      </section>
     </div>
   );
 }
 
 export default App;
+
